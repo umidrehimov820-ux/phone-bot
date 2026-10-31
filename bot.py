@@ -2,32 +2,6 @@ import telebot
 from telebot.apihelper import ApiTelegramException
 
 # Вставьте ваш токен от BotFather
-TOKEN = "9250292473:AAGr-pERBe5ZKRM9egN1OEgGIXFEb6yuGwc"
-# Вставьте юзернейм вашего канала
-CHANNEL_ID = "@my_phones_channel"
-
-bot = telebot.TeleBot(TOKEN)
-user_drafts = {}  # Здесь временно храним черновики объявлений
-
-
-@bot.message_handler(commands=["start"])
-def start(message):
-    bot.send_message(
-        message.chat.id,
-        "Привет! Хотите выложить телефон? Нажмите команду /post",
-    )
-
-
-@bot.message_handler(commands=["post"])
-def post(message):
-    user_drafts[message.chat.id] = {"waiting": True}
-    bot.send_message(
-        message.chat.id,
-        "Пожалуйста, отправьте фото и описание телефона (модель, состояние, цена, контакты) одним сообщени…
-[21:58, 31.10.2026] U.33: import telebot
-from telebot.apihelper import ApiTelegramException
-
-# Вставьте ваш токен от BotFather
 TOKEN = "9250292473:AAGr-pERbe5ZKRM9egN1OEgGIXFEb6yuGwc"
 # Вставьте юзернейм вашего канала
 CHANNEL_ID = "@my_phones_channel"
@@ -131,7 +105,7 @@ def callback_inline(call):
 
             bot.answer_callback_query(call.id, "Успешно опубликовано!")
             
-            # Безопасное обновление подписи (если отправляли фото или текст)
+            # Безопасное обновление подписи
             try:
                 bot.edit_message_caption(
                     "✅ Объявление успешно опубликовано в канале!",
